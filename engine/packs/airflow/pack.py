@@ -13,7 +13,6 @@ from typing import Any
 
 from engine.core.models import CheckResult, CheckStatus, SuggestedFix
 from engine.core.fixes import (
-    fuzzy_match_column,
     make_unified_diff,
     apply_column_rename,
     apply_column_removal,

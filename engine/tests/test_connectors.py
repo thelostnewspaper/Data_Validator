@@ -26,13 +26,12 @@ mock_snowflake_pkg.connector = mock_snowflake
 sys.modules["snowflake"] = mock_snowflake_pkg
 sys.modules["snowflake.connector"] = mock_snowflake
 
-import pytest
-from unittest.mock import patch
-from engine.connectors.base import verify_connection, get_connector
-from engine.connectors.doris import DorisConnector
-from engine.connectors.bigquery import BigQueryConnector
-from engine.connectors.snowflake import SnowflakeConnector
-from engine.connectors.airflow_api import AirflowApiConnector
+from unittest.mock import patch  # noqa: E402
+from engine.connectors.base import verify_connection  # noqa: E402
+from engine.connectors.doris import DorisConnector  # noqa: E402
+from engine.connectors.bigquery import BigQueryConnector  # noqa: E402
+from engine.connectors.snowflake import SnowflakeConnector  # noqa: E402
+from engine.connectors.airflow_api import AirflowApiConnector  # noqa: E402
 
 
 class TestDorisConnector:

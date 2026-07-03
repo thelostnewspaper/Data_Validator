@@ -72,5 +72,5 @@ class TestApplyColumnRemoval:
         content = "SELECT\n  id,\n  name,\n  email,\n  name,\n  status\nFROM users"
         result = apply_column_removal(content, "name")
         lines = result.strip().splitlines()
-        name_count = sum(1 for l in lines if "name" in l.strip().lower())
+        name_count = sum(1 for line in lines if "name" in line.strip().lower())
         assert name_count == 1  # Only one occurrence should remain

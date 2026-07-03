@@ -4,7 +4,7 @@ import json
 from engine.core.models import (
     CheckResult, CheckStatus, CheckCategory,
     SuggestedFix, ValidationResult, RemediationOption,
-    FixImpact, AirflowConnectionFix, CodeChange,
+    FixImpact, AirflowConnectionFix,
 )
 
 

@@ -5,14 +5,12 @@ and orchestrates the layer1 → layer2 → suggest_fixes pipeline.
 
 from __future__ import annotations
 
-import sys
 import logging
 from typing import Any
 
 from engine.core.models import (
     CheckResult,
     CheckStatus,
-    SuggestedFix,
     ValidationResult,
 )
 from engine.core.rule_pack import RulePack

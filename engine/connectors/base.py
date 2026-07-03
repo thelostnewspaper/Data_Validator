@@ -8,7 +8,6 @@ Doris, BigQuery, Snowflake, and Airflow API connectors.
 from __future__ import annotations
 
 from typing import Any, Protocol, runtime_checkable
-from functools import lru_cache
 
 
 @runtime_checkable

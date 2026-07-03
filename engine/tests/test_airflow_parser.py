@@ -3,9 +3,6 @@
 from engine.packs.airflow.parser import (
     parse_dag_file,
     parse_dag_ast,
-    extract_imports,
-    extract_dag_id,
-    extract_tasks,
     extract_source_tables,
     extract_columns_from_sql,
 )
@@ -13,8 +10,6 @@ from engine.tests.conftest import (
     VALID_DAG,
     SYNTAX_ERROR_DAG,
     CIRCULAR_DEP_DAG,
-    SQL_DUPLICATE_COLUMNS_DAG,
-    NON_AIRFLOW_FILE,
 )
 
 

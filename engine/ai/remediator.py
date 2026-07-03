@@ -11,7 +11,6 @@ Phase 4: Full implementation with streaming variants.
 from __future__ import annotations
 
 import ast
-import json
 import logging
 from typing import Any, Iterator
 

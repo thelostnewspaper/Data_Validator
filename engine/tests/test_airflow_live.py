@@ -4,7 +4,6 @@ import pytest
 from unittest.mock import MagicMock, patch
 from engine.core.models import CheckStatus
 from engine.packs.airflow.live_checks import run_all_live_checks
-from engine.packs.airflow.parser import parse_dag_file
 
 
 @pytest.fixture

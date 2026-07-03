@@ -4,7 +4,6 @@ Test fixtures — sample DAG files for testing.
 Provides both valid and invalid DAGs covering all 13 check rules.
 """
 
-import pytest
 import sys
 import os
 

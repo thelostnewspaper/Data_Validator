@@ -25,7 +25,6 @@ from __future__ import annotations
 import ast
 import re
 from collections import Counter
-from typing import Any
 
 from engine.core.models import CheckResult, CheckStatus, CheckCategory
 from engine.core.graph import build_dependency_graph, has_circular_dependencies
@@ -145,7 +144,6 @@ def check_dag_variable_integrity(content: str, dag_info: DAGInfo) -> list[CheckR
     # Check if default_args is referenced in DAG() but not defined
     tree, _ = parse_dag_ast(content)
     if tree:
-        default_args_used = False
         default_args_defined = dag_info.default_args_name is not None
 
         for node in ast.walk(tree):
@@ -155,7 +153,6 @@ def check_dag_variable_integrity(content: str, dag_info: DAGInfo) -> list[CheckR
                     for kw in node.keywords:
                         if kw.arg == "default_args":
                             if isinstance(kw.value, ast.Name):
-                                default_args_used = True
                                 if not default_args_defined:
                                     results.append(CheckResult(
                                         id="AFW002",
@@ -326,7 +323,6 @@ def check_dependency_integrity(content: str, dag_info: DAGInfo) -> list[CheckRes
     # We need to map from variable names to task_ids
     # The parser gives us task_ids, but dependencies use variable names
     # We'll check both
-    defined_task_ids = {t.task_id for t in dag_info.tasks}
 
     # Also extract variable names assigned to tasks from the AST
     tree, _ = parse_dag_ast(content)

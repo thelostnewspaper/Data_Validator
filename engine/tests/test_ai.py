@@ -16,10 +16,9 @@ else:
     mock_google.generativeai = mock_genai
     sys.modules["google"] = mock_google
 
-from engine.ai.provider import make_llm
-from engine.ai.claude import ClaudeProvider
-from engine.ai.gemini import GeminiProvider
-from engine.core.models import FixImpact
+from engine.ai.provider import make_llm  # noqa: E402
+from engine.ai.claude import ClaudeProvider  # noqa: E402
+from engine.ai.gemini import GeminiProvider  # noqa: E402
 
 
 class TestAiProviders:
