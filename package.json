@@ -3,11 +3,11 @@
   "displayName": "AI Validator",
   "description": "AI-powered validator platform with pluggable rule packs — Airflow DAGs, dbt, SQL migrations, CI/CD, Kubernetes, and more. Static analysis, deterministic fixes, and AI remediation, all running locally.",
   "version": "0.1.0",
-  "publisher": "ariffayaz",
+  "publisher": "ArifFayazKhan",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ariffayaz/ai-validator"
+    "url": "https://github.com/thelostnewspaper/Data_Validator.git"
   },
   "engines": {
     "vscode": "^1.85.0"
