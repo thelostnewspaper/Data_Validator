@@ -2,7 +2,7 @@
   "name": "data-validator",
   "displayName": "Data Validator",
   "description": "AI-powered validator platform with pluggable rule packs — Airflow DAGs, dbt, SQL migrations, CI/CD, Kubernetes, and more. Static analysis, deterministic fixes, and AI remediation, all running locally.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "icon": "icon.png",
   "publisher": "ArifFayazKhan",
   "license": "MIT",
