@@ -1,10 +1,14 @@
-# AI DAG Validator for VS Code
+<p align="center">
+  <img src="icon.png" alt="Data Validator Logo" width="128" height="128" />
+</p>
 
-An AI-powered linter, live verifier, and auto-remediator for data pipelines. Starting with **Apache Airflow DAGs**, this extension catches structural errors before they are deployed, verifies external references, and suggests one-click AI fixes right in your editor.
+# Data Validator for VS Code
+
+An AI-powered linter, live verifier, and auto-remediator for data pipelines. Starting with Apache Airflow DAGs, this extension catches structural errors before they are deployed, verifies external references, and suggests one-click AI fixes right in your editor.
 
 ---
 
-## 🚀 Key Features
+## Key Features
 
 ### 1. Advanced Airflow DAG Analysis
 Safely inspects Airflow DAG files natively inside VS Code without executing them. Catches issues like:
@@ -20,13 +24,13 @@ Extracts source tables and columns from the DAG's SQL queries and verifies them 
 *   **Airflow API**: Connects to your Airflow REST API to check if referenced connection IDs actually exist in the target environment.
 
 ### 3. AI-Powered Auto-Remediation
-Powered by **Google Gemini** (default) or Anthropic Claude. 
+Powered by Google Gemini (default) or Anthropic Claude. 
 *   **Gated Fixes**: When you encounter an error, click "Fix with AI" in the validator dashboard. The AI will stream code fix variants (low, medium, high impact).
 *   **Deterministic Safety**: The extension runs the proposed AI changes through the static-check engine in the background. If the AI introduces new errors, the fix is gated to prevent you from applying broken code.
 
 ---
 
-## 🛠 Installation
+## Installation
 
 1. Install the extension from the VS Code Marketplace.
 2. Ensure you have **Python 3.10+** installed on your system.
@@ -37,7 +41,7 @@ Powered by **Google Gemini** (default) or Anthropic Claude.
 
 ---
 
-## ⚙️ Configuration
+## Configuration
 
 ### Setting your AI Provider (Gemini / Claude)
 The extension securely stores API keys in your OS keychain.
@@ -54,7 +58,7 @@ To enable live checks against your warehouse or Airflow instance, configure your
 
 ---
 
-## 📖 How to Use
+## How to Use
 
 1. **Open a DAG**: Simply open any Python file containing an Airflow DAG. 
 2. **View Lints**: You will immediately see inline squiggles for syntax errors, circular dependencies, or deprecated calls. Hover over them for details.
