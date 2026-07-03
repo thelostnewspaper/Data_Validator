@@ -1,0 +1,17 @@
+# Core engine dependencies
+# Only sqlglot is required for the universal airflow pack
+# Others are optional for connectors and AI
+sqlglot>=25.0.0
+
+# Optional: AI providers (install the one you use)
+# anthropic>=0.40.0
+# google-generativeai>=0.8.0
+# openai>=1.40.0
+
+# Optional: Database connectors (install for live checks)
+# pymysql>=1.1.0
+# google-cloud-bigquery>=3.20.0
+# snowflake-connector-python>=3.10.0
+
+# Optional: Airflow API client
+# apache-airflow-client>=2.9.0

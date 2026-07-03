@@ -1,0 +1,14 @@
+.vscode/**
+.github/**
+src/**
+media/*.ts
+engine/tests/**
+engine/requirements-dev.txt
+node_modules/**
+*.map
+.gitignore
+tsconfig.json
+esbuild.js
+**/*.pyc
+**/__pycache__/**
+.venv/**

@@ -1,0 +1,564 @@
+/* ============================================================
+   AI Validator — Webview Dashboard Styles
+   
+   Theme-aware using VS Code CSS custom properties.
+   Automatically adapts to dark/light mode.
+   ============================================================ */
+
+/* ---------------------------------------------------------------------------
+   Reset & Base
+   --------------------------------------------------------------------------- */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--vscode-font-family, 'Segoe UI', system-ui, sans-serif);
+    font-size: var(--vscode-font-size, 13px);
+    color: var(--vscode-foreground);
+    background: var(--vscode-editor-background);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+#app {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding: 0;
+}
+
+/* ---------------------------------------------------------------------------
+   Header
+   --------------------------------------------------------------------------- */
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    background: var(--vscode-sideBar-background, var(--vscode-editor-background));
+    border-bottom: 1px solid var(--vscode-panel-border, rgba(128,128,128,0.2));
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.header-icon {
+    font-size: 20px;
+}
+
+header h1 {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--vscode-foreground);
+    letter-spacing: -0.3px;
+}
+
+.header-actions {
+    display: flex;
+    gap: 6px;
+}
+
+/* ---------------------------------------------------------------------------
+   Buttons
+   --------------------------------------------------------------------------- */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 10px;
+    border: none;
+    border-radius: 4px;
+    font-size: 12px;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    white-space: nowrap;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+.btn:active {
+    transform: scale(0.97);
+}
+
+.btn-primary {
+    background: var(--vscode-button-background);
+    color: var(--vscode-button-foreground);
+}
+
+.btn-primary:hover {
+    background: var(--vscode-button-hoverBackground);
+}
+
+.btn-accent {
+    background: linear-gradient(135deg, #7c3aed, #6d28d9);
+    color: #fff;
+}
+
+.btn-accent:hover {
+    background: linear-gradient(135deg, #6d28d9, #5b21b6);
+}
+
+.btn-ghost {
+    background: transparent;
+    color: var(--vscode-foreground);
+}
+
+.btn-ghost:hover {
+    background: var(--vscode-toolbar-hoverBackground, rgba(128,128,128,0.1));
+}
+
+.btn-success {
+    background: var(--vscode-testing-iconPassed, #388a34);
+    color: #fff;
+}
+
+.btn-danger {
+    background: var(--vscode-errorForeground, #f44747);
+    color: #fff;
+}
+
+.btn-sm {
+    padding: 2px 8px;
+    font-size: 11px;
+}
+
+/* ---------------------------------------------------------------------------
+   Loading
+   --------------------------------------------------------------------------- */
+
+.loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 24px;
+    color: var(--vscode-descriptionForeground);
+}
+
+.spinner {
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--vscode-progressBar-background, #0078d4);
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* ---------------------------------------------------------------------------
+   Summary Cards
+   --------------------------------------------------------------------------- */
+
+.summary {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    padding: 12px 16px;
+}
+
+.summary-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 12px 8px;
+    border-radius: 8px;
+    background: var(--vscode-editorWidget-background, rgba(128,128,128,0.06));
+    border: 1px solid var(--vscode-panel-border, rgba(128,128,128,0.15));
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.summary-card:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.summary-count {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.summary-label {
+    font-size: 11px;
+    color: var(--vscode-descriptionForeground);
+    margin-top: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.summary-errors .summary-count {
+    color: var(--vscode-errorForeground, #f44747);
+}
+
+.summary-warnings .summary-count {
+    color: var(--vscode-editorWarning-foreground, #cca700);
+}
+
+.summary-passed .summary-count {
+    color: var(--vscode-testing-iconPassed, #388a34);
+}
+
+/* ---------------------------------------------------------------------------
+   Content Sections
+   --------------------------------------------------------------------------- */
+
+#content {
+    padding: 0 16px 16px;
+    flex: 1;
+}
+
+.section {
+    margin-top: 16px;
+}
+
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--vscode-foreground);
+    margin-bottom: 10px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--vscode-panel-border, rgba(128,128,128,0.15));
+}
+
+.section-icon {
+    font-size: 14px;
+}
+
+/* ---------------------------------------------------------------------------
+   Empty State
+   --------------------------------------------------------------------------- */
+
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 48px 16px;
+    color: var(--vscode-descriptionForeground);
+    text-align: center;
+}
+
+.empty-icon {
+    font-size: 48px;
+    margin-bottom: 12px;
+    opacity: 0.6;
+}
+
+.empty-state h2 {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: var(--vscode-foreground);
+}
+
+.empty-state p {
+    font-size: 12px;
+    max-width: 300px;
+}
+
+/* ---------------------------------------------------------------------------
+   Check Result Cards
+   --------------------------------------------------------------------------- */
+
+.check-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 12px;
+    border-radius: 6px;
+    background: var(--vscode-editorWidget-background, rgba(128,128,128,0.04));
+    border: 1px solid var(--vscode-panel-border, rgba(128,128,128,0.12));
+    margin-bottom: 6px;
+    transition: background 0.15s ease;
+    cursor: default;
+}
+
+.check-card:hover {
+    background: var(--vscode-list-hoverBackground, rgba(128,128,128,0.08));
+}
+
+.check-icon {
+    font-size: 14px;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.check-icon.fail { color: var(--vscode-errorForeground, #f44747); }
+.check-icon.warn { color: var(--vscode-editorWarning-foreground, #cca700); }
+.check-icon.pass { color: var(--vscode-testing-iconPassed, #388a34); }
+
+.check-body {
+    flex: 1;
+    min-width: 0;
+}
+
+.check-header {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 2px;
+}
+
+.check-id {
+    font-family: var(--vscode-editor-font-family, monospace);
+    font-size: 11px;
+    padding: 1px 5px;
+    border-radius: 3px;
+    background: rgba(128,128,128,0.15);
+    color: var(--vscode-descriptionForeground);
+}
+
+.check-message {
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.check-detail {
+    font-size: 11px;
+    color: var(--vscode-descriptionForeground);
+    margin-top: 4px;
+    white-space: pre-wrap;
+    line-height: 1.5;
+}
+
+.check-line {
+    font-size: 10px;
+    color: var(--vscode-descriptionForeground);
+    font-family: var(--vscode-editor-font-family, monospace);
+}
+
+/* ---------------------------------------------------------------------------
+   Fix Cards
+   --------------------------------------------------------------------------- */
+
+.fix-card {
+    padding: 10px 12px;
+    border-radius: 6px;
+    background: var(--vscode-editorWidget-background, rgba(128,128,128,0.04));
+    border: 1px solid var(--vscode-panel-border, rgba(128,128,128,0.12));
+    margin-bottom: 8px;
+}
+
+.fix-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+}
+
+.fix-description {
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.fix-confidence {
+    font-size: 10px;
+    padding: 1px 6px;
+    border-radius: 10px;
+    background: var(--vscode-badge-background);
+    color: var(--vscode-badge-foreground);
+}
+
+.fix-actions {
+    display: flex;
+    gap: 6px;
+    margin-top: 8px;
+}
+
+.fix-diff {
+    margin-top: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    font-family: var(--vscode-editor-font-family, monospace);
+    font-size: 11px;
+    line-height: 1.5;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+/* ---------------------------------------------------------------------------
+   Diff Viewer
+   --------------------------------------------------------------------------- */
+
+.diff-container {
+    background: var(--vscode-editor-background);
+    border: 1px solid var(--vscode-panel-border, rgba(128,128,128,0.15));
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.diff-line {
+    padding: 0 8px;
+    white-space: pre;
+    font-family: var(--vscode-editor-font-family, monospace);
+    font-size: 11px;
+    line-height: 1.6;
+}
+
+.diff-line.addition {
+    background: var(--vscode-diffEditor-insertedTextBackground, rgba(72,191,72,0.15));
+    color: var(--vscode-gitDecoration-addedResourceForeground, #81b88b);
+}
+
+.diff-line.deletion {
+    background: var(--vscode-diffEditor-removedTextBackground, rgba(255,0,0,0.12));
+    color: var(--vscode-gitDecoration-deletedResourceForeground, #c74e39);
+}
+
+.diff-line.context {
+    color: var(--vscode-descriptionForeground);
+}
+
+.diff-line.header {
+    color: var(--vscode-textLink-foreground, #3794ff);
+    font-weight: 600;
+}
+
+/* ---------------------------------------------------------------------------
+   AI Remediation Cards
+   --------------------------------------------------------------------------- */
+
+.ai-card {
+    padding: 12px;
+    border-radius: 8px;
+    background: var(--vscode-editorWidget-background, rgba(128,128,128,0.04));
+    border: 1px solid var(--vscode-panel-border, rgba(128,128,128,0.12));
+    margin-bottom: 10px;
+    transition: border-color 0.2s ease;
+}
+
+.ai-card:hover {
+    border-color: var(--vscode-focusBorder, rgba(0,120,212,0.5));
+}
+
+.ai-card.failed {
+    opacity: 0.6;
+    border-color: var(--vscode-errorForeground, rgba(244,71,71,0.3));
+}
+
+.ai-impact {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin-bottom: 6px;
+}
+
+.ai-impact.low {
+    background: rgba(56,138,52,0.15);
+    color: var(--vscode-testing-iconPassed, #388a34);
+}
+
+.ai-impact.medium {
+    background: rgba(204,167,0,0.15);
+    color: var(--vscode-editorWarning-foreground, #cca700);
+}
+
+.ai-impact.high {
+    background: rgba(244,71,71,0.15);
+    color: var(--vscode-errorForeground, #f44747);
+}
+
+.ai-title {
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.ai-root-cause {
+    font-size: 11px;
+    color: var(--vscode-descriptionForeground);
+    margin-bottom: 6px;
+}
+
+.ai-explanation {
+    font-size: 11px;
+    margin-bottom: 8px;
+    padding: 6px 8px;
+    background: rgba(128,128,128,0.06);
+    border-radius: 4px;
+    border-left: 3px solid var(--vscode-textLink-foreground, #3794ff);
+}
+
+.ai-failed-reason {
+    font-size: 11px;
+    color: var(--vscode-errorForeground, #f44747);
+    padding: 6px 8px;
+    background: rgba(244,71,71,0.08);
+    border-radius: 4px;
+    margin-top: 6px;
+}
+
+/* ---------------------------------------------------------------------------
+   Animations
+   --------------------------------------------------------------------------- */
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.animate-in {
+    animation: fadeIn 0.2s ease forwards;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50%      { opacity: 0.5; }
+}
+
+.streaming {
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* ---------------------------------------------------------------------------
+   Scrollbar
+   --------------------------------------------------------------------------- */
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--vscode-scrollbarSlider-background, rgba(128,128,128,0.3));
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--vscode-scrollbarSlider-hoverBackground, rgba(128,128,128,0.5));
+}

@@ -1,0 +1,196 @@
+{
+  "name": "ai-validator",
+  "displayName": "AI Validator",
+  "description": "AI-powered validator platform with pluggable rule packs — Airflow DAGs, dbt, SQL migrations, CI/CD, Kubernetes, and more. Static analysis, deterministic fixes, and AI remediation, all running locally.",
+  "version": "0.1.0",
+  "publisher": "ariffayaz",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ariffayaz/ai-validator"
+  },
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Linters",
+    "Programming Languages",
+    "Other"
+  ],
+  "keywords": [
+    "airflow",
+    "dag",
+    "validator",
+    "linter",
+    "ai",
+    "dbt",
+    "sql",
+    "data-pipeline"
+  ],
+  "activationEvents": [
+    "onLanguage:python",
+    "workspaceContains:**/*.py"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "ai-validator.validate",
+        "title": "Validate Current File",
+        "category": "AI Validator"
+      },
+      {
+        "command": "ai-validator.fixWithAI",
+        "title": "Fix with AI",
+        "category": "AI Validator"
+      },
+      {
+        "command": "ai-validator.openPanel",
+        "title": "Open Validator Panel",
+        "category": "AI Validator"
+      },
+      {
+        "command": "ai-validator.checkLiveTarget",
+        "title": "Check Live Target",
+        "category": "AI Validator"
+      },
+      {
+        "command": "ai-validator.createAirflowConnection",
+        "title": "Create Airflow Connection",
+        "category": "AI Validator"
+      },
+      {
+        "command": "ai-validator.setApiKey",
+        "title": "Set AI Provider API Key",
+        "category": "AI Validator"
+      },
+      {
+        "command": "ai-validator.addConnectionProfile",
+        "title": "Add Connection Profile",
+        "category": "AI Validator"
+      }
+    ],
+    "configuration": {
+      "title": "AI Validator",
+      "properties": {
+        "ai-validator.pythonPath": {
+          "type": "string",
+          "default": "python3",
+          "description": "Path to the Python interpreter used to run the validation engine."
+        },
+        "ai-validator.enabledPacks": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [
+            "airflow-universal"
+          ],
+          "description": "List of enabled validation pack IDs."
+        },
+        "ai-validator.validateOnSave": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically validate files on save."
+        },
+        "ai-validator.validateOnOpen": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically validate files when opened."
+        },
+        "ai-validator.ai.provider": {
+          "type": "string",
+          "enum": [
+            "claude",
+            "gemini",
+            "openai"
+          ],
+          "default": "gemini",
+          "description": "AI provider for remediation."
+        },
+        "ai-validator.ai.model": {
+          "type": "string",
+          "default": "",
+          "description": "AI model name. Leave empty to use the provider default (Claude: claude-opus-4-8, Gemini: gemini-2.5-pro, OpenAI: gpt-4o)."
+        },
+        "ai-validator.ai.cheapModel": {
+          "type": "string",
+          "default": "",
+          "description": "Cheaper/faster model for low-impact fix variants. Leave empty for provider default."
+        },
+        "ai-validator.connections": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "doris",
+                  "bigquery",
+                  "snowflake",
+                  "airflow"
+                ]
+              },
+              "host": {
+                "type": "string"
+              },
+              "port": {
+                "type": "integer"
+              },
+              "database": {
+                "type": "string"
+              },
+              "username": {
+                "type": "string"
+              }
+            }
+          },
+          "default": [],
+          "description": "Connection profiles for live checks. Passwords are stored in SecretStorage (OS keychain), not here."
+        }
+      }
+    },
+    "menus": {
+      "editor/context": [
+        {
+          "command": "ai-validator.validate",
+          "when": "resourceLangId == python",
+          "group": "ai-validator"
+        },
+        {
+          "command": "ai-validator.fixWithAI",
+          "when": "resourceLangId == python",
+          "group": "ai-validator"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "compile": "node esbuild.js",
+    "watch": "node esbuild.js --watch",
+    "package": "vsce package --no-dependencies",
+    "publish:marketplace": "vsce publish",
+    "publish:openvsx": "ovsx publish",
+    "lint": "eslint src/ --ext .ts",
+    "test:engine": "cd engine && python -m pytest tests/ -v",
+    "prepackage": "npm run compile"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@types/vscode": "^1.85.0",
+    "@typescript-eslint/eslint-plugin": "^8.62.1",
+    "@typescript-eslint/parser": "^8.62.1",
+    "@vscode/vsce": "^2.24.0",
+    "esbuild": "^0.20.0",
+    "eslint": "^8.56.0",
+    "ovsx": "^0.8.0",
+    "typescript": "^5.3.0"
+  },
+  "dependencies": {
+    "vscode-jsonrpc": "^8.2.0"
+  }
+}
