@@ -4,18 +4,18 @@
 
 # Data Validator for VS Code
 
-An AI-powered linter, live verifier, and auto-remediator for data pipelines. Starting with Apache Airflow DAGs, this extension catches structural errors before they are deployed, verifies external references, and suggests one-click AI fixes right in your editor.
+An AI-powered linter, live verifier, and auto-remediator for your entire engineering ecosystem. Built with pluggable rule packs, this extension acts as a universal validation platform for Airflow DAGs, dbt models, SQL migrations, CI/CD pipelines, Kubernetes manifests, and more. It catches structural errors before they are deployed, verifies external references, and suggests one-click AI fixes right in your editor.
 
 ---
 
 ## Key Features
 
-### 1. Advanced Airflow DAG Analysis
-Safely inspects Airflow DAG files natively inside VS Code without executing them. Catches issues like:
-*   **Syntax Errors & Imports**: Detects unresolved imports and basic syntax issues.
-*   **Structural Integrity**: Finds circular dependencies in your tasks (`>>`).
-*   **Deprecation Warnings**: Flags outdated practices like using `schedule_interval` instead of `schedule`.
-*   **SQL Lints**: Finds duplicate columns in inline SQL queries using `sqlglot`.
+### 1. Universal Validation Platform
+The core engine supports hot-swappable Rule Packs allowing it to validate multiple ecosystems natively inside VS Code:
+*   **Apache Airflow DAGs**: Detects circular dependencies (>>), unresolved imports, and deprecated variables (e.g., schedule_interval).
+*   **dbt Models (Coming Soon)**: Validate model references, macros, and schema configurations.
+*   **SQL Migrations**: Finds duplicate columns and syntax errors in inline queries or standalone scripts using sqlglot.
+*   **Infrastructure (Coming Soon)**: CI/CD (GitHub Actions) and Kubernetes manifest linting.
 
 ### 2. Live Target Verification (Data Warehouses)
 Extracts source tables and columns from the DAG's SQL queries and verifies them against your live databases. 
